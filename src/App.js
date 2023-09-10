@@ -12,6 +12,9 @@ function App() {
   //       setEmployees(() => [data.data]);
   //     });
   // }, []);
+  //
+  // I would then pass in the employees into the table as a prop and use the table as just the display layer so that we dont have
+  // API calls in the table component and allow it to be dumber.
   return (
     <div className="App">
       <Table />

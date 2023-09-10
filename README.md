@@ -4,6 +4,14 @@ Worth noting - I used this opportunity to show a PoC of a project. Something lik
 
 I'd also like to say - I did use the fetch api to pull in the employees originally. I repeatedly encountered the 429 error of too many calls too fast. Since I didnt have control over the api environment, I did the call once and just hardcoded the data. I'll leave the fetch in the code commented out so that its clear I know how to make an API call. I hope this is okay, it allowed for faster development with no api error slowing things down.
 
+## Requirements:
+
+[x] Show Table of Employees
+[x] Sortable Columns
+[x] Filterable Values
+[x] Separate display for detailed view of employee
+[x] Enter ID and see if employee exists and if their name starts with a vowel
+
 ## Known Bugs or Future Improvements
 
 Known Bugs:

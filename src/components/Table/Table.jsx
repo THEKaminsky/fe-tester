@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import _ from "lodash";
 import { ArrowUpIcon, ArrowDownIcon } from "@radix-ui/react-icons";
 import * as s from "./styles";
+import Modal from "../Modal/Modal";
 const EMPLOYEES = [
   {
     id: 1,
@@ -175,7 +176,8 @@ const EMPLOYEES = [
 
 const Table = () => {
   const [employees, setEmployees] = useState(EMPLOYEES);
-  // const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [modalEmployee, setModalEmployee] = useState(null);
   const headers = Object.keys(EMPLOYEES[0]);
 
   useEffect(() => {}, [employees]);
@@ -243,14 +245,23 @@ const Table = () => {
                 <s.TD>{emp.employee_age}</s.TD>
                 <s.TD>{emp.profile_image || "-"}</s.TD>
                 <s.TD>
-                  <s.DetailsButton>Details &gt;</s.DetailsButton>
+                  <s.DetailsButton
+                    onClick={() => {
+                      setModalEmployee(emp);
+                      setShowModal(true);
+                    }}
+                  >
+                    Details &gt;
+                  </s.DetailsButton>
                 </s.TD>
               </tr>
             );
           })}
         </tbody>
       </s.StyledTable>
-      ;
+      {showModal && (
+        <Modal employee={modalEmployee} onClose={() => setShowModal(false)} />
+      )}
     </s.Wrapper>
   );
 };

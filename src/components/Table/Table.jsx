@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import _ from "lodash";
 import { ArrowUpIcon, ArrowDownIcon } from "@radix-ui/react-icons";
 import * as s from "./styles";

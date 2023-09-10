@@ -1,5 +1,4 @@
 import "./App.css";
-import { useEffect, useState } from "react";
 import Table from "./components/Table";
 
 function App() {

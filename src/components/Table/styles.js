@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  border: 1px solid #e4e2db;
-
-  background: floralwhite;
-  border-radius: 4px;
+  background: rgba(119, 136, 153, 0.5);
+  box-shadow: 0 0 12px black;
+  border-radius: 6px;
   margin: 2rem 6rem 2rem 6rem;
   padding: 1rem 1.5rem;
 `;
@@ -15,7 +14,7 @@ export const StyledTable = styled.table`
   border-radius: 2px;
   width: 100%;
   margin: 1rem auto 1rem auto;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.85);
 `;
 
 export const TD = styled.td`
@@ -84,7 +83,7 @@ export const VowelDisplay = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   margin-top: -0.5rem;
-  margin-left: -10.5rem;
+  margin-left: -0.5rem;
 `;

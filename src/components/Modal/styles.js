@@ -37,8 +37,6 @@ export const Value = styled.span`
 `;
 
 export const CloseButton = styled.button`
-  height: 24px;
-  width: 24px;
   border: none;
   background-color: transparent;
 

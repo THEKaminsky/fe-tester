@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   border: 1px solid #e4e2db;
-  background: #fff;
+
+  background: floralwhite;
   border-radius: 4px;
   margin: 2rem 6rem 2rem 6rem;
   padding: 1rem 1.5rem;
@@ -10,9 +11,11 @@ export const Wrapper = styled.div`
 
 export const StyledTable = styled.table`
   border: 1px solid #e4e2db;
+  background-color: #fff;
   border-radius: 2px;
   width: 100%;
   margin: 1rem auto 1rem auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 `;
 
 export const TD = styled.td`
@@ -33,6 +36,19 @@ export const Button = styled.button`
   height: 100%;
   font-size: 1rem;
   font-weight: 600;
+`;
+
+export const SearchButton = styled.button`
+  background-color: #fff;
+  border: none;
+  margin-left: 1rem;
+  border-radius: 4px;
+  height: 28px;
+
+  &:hover {
+    background-color: #ddd;
+    cursor: pointer;
+  }
 `;
 
 export const DetailsButton = styled.button`
@@ -57,4 +73,18 @@ export const FlexTitle = styled.div`
 export const FilterInput = styled.input`
   height: 24px;
   width: 180px;
+`;
+
+export const SearchDisplay = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const VowelDisplay = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 0.7rem;
+  margin-top: -0.5rem;
+  margin-left: -10.5rem;
 `;

@@ -203,8 +203,10 @@ const Table = ({ apiEmployees }) => {
     let filtered;
     console.log("val", val, typeof Number(val));
     typeof Number(val) == "number"
-      ? (filtered = EMPLOYEES.filter((emp) =>
-          emp.employee_salary.toString().includes(val)
+      ? (filtered = EMPLOYEES.filter(
+          (emp) =>
+            emp.employee_salary.toString().includes(val) ||
+            emp.employee_age.toString().includes(val)
         ))
       : (filtered = EMPLOYEES.filter((emp) =>
           emp.employee_name.toLowerCase().includes(val.toLowerCase())
@@ -217,8 +219,8 @@ const Table = ({ apiEmployees }) => {
     const emp = EMPLOYEES[idSearch - 1] || false;
     if (emp) {
       emp.employee_name[0].match(/[aeiou]/gi)
-        ? setEmpVowelDisplay("Employee name DOES start with a vowel")
-        : setEmpVowelDisplay("Employee name DOES NOT start with a vowel");
+        ? setEmpVowelDisplay(`Employee name: ${emp.employee_name}`)
+        : setEmpVowelDisplay(`Employee’s name does not begin with a vowel`);
     } else {
       setEmpVowelDisplay("Invalid Employee");
     }
@@ -243,7 +245,7 @@ const Table = ({ apiEmployees }) => {
         </div>
         <s.FilterInput
           type="text"
-          placeholder="Filter by Name or Salary"
+          placeholder="Filter by Name, Salary, or Age"
           onChange={(e) => handleFilter(e.target.value)}
         />
       </s.FlexTitle>

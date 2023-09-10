@@ -17,7 +17,7 @@ export const StyledTable = styled.table`
 
 export const TD = styled.td`
   font-size: 1rem;
-  padding: 0.5rem 0 0.5rem 1rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
   &:not-first-child {
     border-top: 1px solid #787162;
   }
@@ -29,7 +29,7 @@ export const TD = styled.td`
 
 export const Button = styled.button`
   border: none;
-  width: 100%;
+  background-color: #fff;
   height: 100%;
   font-size: 1rem;
   font-weight: 600;
@@ -44,7 +44,8 @@ export const DetailsButton = styled.button`
 `;
 
 export const TH = styled.th`
-  height: 30px;
+  height: 50px;
+  justify-content: space-between;
 `;
 
 export const FlexTitle = styled.div`

@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import _ from "lodash";
+import { ArrowUpIcon, ArrowDownIcon } from "@radix-ui/react-icons";
 import * as s from "./styles";
-
 const EMPLOYEES = [
   {
     id: 1,
@@ -175,12 +175,26 @@ const EMPLOYEES = [
 
 const Table = () => {
   const [employees, setEmployees] = useState(EMPLOYEES);
+  // const [showModal, setShowModal] = useState(false);
   const headers = Object.keys(EMPLOYEES[0]);
 
-  const handleSort = (key) => {
-    const sortedEmps = employees.sort((a, b) => a[key].localeCompare(b[key]));
-    console.log(key, "sorted", sortedEmps);
-    setEmployees((prevEmployees) => [...prevEmployees, ...sortedEmps]);
+  useEffect(() => {}, [employees]);
+
+  const handleSort = (key, sort) => {
+    const compare = (a, b) => {
+      if (a < b) {
+        return -1;
+      }
+      if (a > b) {
+        return 1;
+      }
+      return 0;
+    };
+
+    const sortedEmps = employees.sort((a, b) =>
+      sort === "asc" ? compare(a[key], b[key]) : compare(b[key], a[key])
+    );
+    setEmployees(() => [...sortedEmps]);
   };
 
   const handleFilter = (val) => {
@@ -210,8 +224,12 @@ const Table = () => {
       <s.StyledTable>
         {headers.map((key, index) => (
           <s.TH id={index}>
-            <s.Button onClick={() => handleSort(key)}>
-              {_.startCase(key)}
+            <s.Button onClick={() => handleSort(key, "asc")}>
+              <ArrowUpIcon />
+            </s.Button>
+            {_.startCase(key)}
+            <s.Button onClick={() => handleSort(key, "dsc")}>
+              <ArrowDownIcon />
             </s.Button>
           </s.TH>
         ))}
@@ -223,9 +241,9 @@ const Table = () => {
                 <s.TD>{emp.employee_name}</s.TD>
                 <s.TD>{emp.employee_salary}</s.TD>
                 <s.TD>{emp.employee_age}</s.TD>
-                <s.TD>{emp.profile_image || "none"}</s.TD>
+                <s.TD>{emp.profile_image || "-"}</s.TD>
                 <s.TD>
-                  <s.DetailsButton>Details &char62</s.DetailsButton>
+                  <s.DetailsButton>Details &gt;</s.DetailsButton>
                 </s.TD>
               </tr>
             );

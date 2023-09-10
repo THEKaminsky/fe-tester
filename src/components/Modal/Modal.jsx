@@ -1,4 +1,5 @@
 import * as s from "./styles";
+import { Cross1Icon } from "@radix-ui/react-icons";
 
 const Modal = ({ employee, onClose }) => {
   const { id, employee_name, employee_salary, employee_age } = employee;
@@ -7,7 +8,9 @@ const Modal = ({ employee, onClose }) => {
       <s.ModalContent>
         <s.Header>
           <h2>Employee Details</h2>
-          <s.CloseButton onClick={onClose}>X</s.CloseButton>
+          <s.CloseButton onClick={onClose}>
+            <Cross1Icon />
+          </s.CloseButton>
         </s.Header>
 
         <s.FieldArea>

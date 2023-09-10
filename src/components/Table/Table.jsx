@@ -174,13 +174,13 @@ const EMPLOYEES = [
   },
 ];
 
-const Table = () => {
+const Table = ({ apiEmployees }) => {
   const [employees, setEmployees] = useState(EMPLOYEES);
   const [showModal, setShowModal] = useState(false);
   const [modalEmployee, setModalEmployee] = useState(null);
+  const [idSearch, setIdSearch] = useState(null);
+  const [empVowelDisplay, setEmpVowelDisplay] = useState(null);
   const headers = Object.keys(EMPLOYEES[0]);
-
-  useEffect(() => {}, [employees]);
 
   const handleSort = (key, sort) => {
     const compare = (a, b) => {
@@ -213,16 +213,42 @@ const Table = () => {
     setEmployees(filtered);
   };
 
+  const handleVowelSearch = () => {
+    const emp = EMPLOYEES[idSearch - 1] || false;
+    if (emp) {
+      emp.employee_name[0].match(/[aeiou]/gi)
+        ? setEmpVowelDisplay("Employee name DOES start with a vowel")
+        : setEmpVowelDisplay("Employee name DOES NOT start with a vowel");
+    } else {
+      setEmpVowelDisplay("Invalid Employee");
+    }
+  };
+
   return (
     <s.Wrapper>
       <s.FlexTitle>
         <h3>EMPLOYEES</h3>
+        <div>
+          <s.SearchDisplay>
+            <s.FilterInput
+              type="text"
+              placeholder="Employee ID Check"
+              onChange={(e) => setIdSearch(e.target.value)}
+            />
+            <s.SearchButton onClick={() => handleVowelSearch()}>
+              {" "}
+              Search Names{" "}
+            </s.SearchButton>
+          </s.SearchDisplay>
+        </div>
         <s.FilterInput
           type="text"
           placeholder="Filter by Name or Salary"
           onChange={(e) => handleFilter(e.target.value)}
         />
       </s.FlexTitle>
+      {empVowelDisplay && <s.VowelDisplay>{empVowelDisplay}</s.VowelDisplay>}
+
       <s.StyledTable>
         {headers.map((key, index) => (
           <s.TH id={index}>

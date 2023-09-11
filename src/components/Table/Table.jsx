@@ -201,8 +201,8 @@ const Table = ({ apiEmployees }) => {
 
   const handleFilter = (val) => {
     let filtered;
-    console.log("val", val, typeof Number(val));
-    typeof Number(val) == "number"
+    console.log("val", val, typeof val);
+    parseInt(val, 10)
       ? (filtered = EMPLOYEES.filter(
           (emp) =>
             emp.employee_salary.toString().includes(val) ||
